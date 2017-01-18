@@ -23,7 +23,7 @@ def handle_client(client_socket):
 	print("[*] Received: {}".format(request))
 
 	# send back a packet 
-	client_socket.send("ACK!")
+	client_socket.send(b"ACK!")
 	client_socket.close()
 
 while True:
