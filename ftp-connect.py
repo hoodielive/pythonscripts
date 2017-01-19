@@ -10,8 +10,8 @@ def retBanner(ip, port):
 		return
 
 def main():
-	ip1 = '192.168.95.148'
-	ip2 = '192.168.95.149'
+	ip1 = '10.0.1.68'
+	ip2 = '10.0.1.96'
 	port = 21
 	banner = retBanner(ip1, port)
 	if banner1:
