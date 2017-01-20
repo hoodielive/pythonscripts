@@ -1,0 +1,4 @@
+127.0.0.1 - - [20/Jan/2017:13:03:38 -0500] "GET /server-status HTTP/1.0" 200 2924 "-" "Lynx/2.8.9dev.8 libwww-FM/2.14 SSL-MM/1.4.1 GNUTLS/3.4.9"
+127.0.0.1 - - [20/Jan/2017:13:05:27 -0500] "GET / HTTP/1.1" 200 3525 "-" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.87 Safari/537.36"
+127.0.0.1 - - [20/Jan/2017:13:05:27 -0500] "GET /icons/ubuntu-logo.png HTTP/1.1" 200 3623 "http://localhost/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.87 Safari/537.36"
+127.0.0.1 - - [20/Jan/2017:13:05:27 -0500] "GET /favicon.ico HTTP/1.1" 404 500 "http://localhost/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.87 Safari/537.36"

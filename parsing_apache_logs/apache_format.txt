@@ -1,0 +1,103 @@
+According to Apache Website, the log format is:
+
+%h %l %u %t \"%r\" %>s %b \"%{Referer}i\" \"%{User-Agent}i\
+
+During research of the topic: it is encouraged to use regex to parse these
+logs. 
+
+Sample_Log
+172.16.0.3 - - [25/Sep/2002:14:04:19 +0200] "GET / HTTP/1.1" 401 - "" "Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.1) Gecko/20020827"
+
+Sample_regex
+line = '172.16.0.3 - - [25/Sep/2002:14:04:19 +0200] "GET / HTTP/1.1" 401 - "" "Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.1) Gecko/20020827"'
+regex = '([(\d\.)]+) - - \[(.*?)\] "(.*?)" (\d+) - "(.*?)" "(.*?)"'
+
+import re
+print re.match(regex, line).groups()
+
+Sample_yield
+('172.16.0.3', '25/Sep/2002:14:04:19 +0200', 'GET / HTTP/1.1', '401', '', 'Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.1) Gecko/20020827')
+
+Sample_split_into_Tokens
+
+>>> row = """172.16.0.3 - - [25/Sep/2002:14:04:19 +0200] "GET / HTTP/1.1" 401 - "" "Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.1) Gecko/20020827" """
+>>> import re
+>>> map(''.join, re.findall(r'\"(.*?)\"|\[(.*?)\]|(\S+)', row))
+['172.16.0.3', '-', '-', '25/Sep/2002:14:04:19 +0200', 'GET / HTTP/1.1', '401', '-', '', 'Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.1) Gecko/20020827']
+
+There are Apache_Log_Parser Libraries/Modules
+
+>>> import apache_log_parser
+ >>> line_parser = apache_log_parser.make_parser("%h <<%P>> %t %Dus \"%r\" %>s %b  \"%{Referer}i\" \"%{User-Agent}i\" %l %u")
+>>> log_line_data = line_parser('127.0.0.1 <<6113>> [16/Aug/2013:15:45:34 +0000] 1966093us "GET / HTTP/1.1" 200 3478  "https://example.com/" "Mozilla/5.0 (X11; U; Linux x86_64; en-US; rv:1.9.2.18)" - -')
+>>> pprint(log_line_data)
+{'pid': '6113',
+ 'remote_host': '127.0.0.1',
+ 'remote_logname': '-',
+ 'remote_user': '',
+ 'request_first_line': 'GET / HTTP/1.1',
+ 'request_header_referer': 'https://example.com/',
+ 'request_header_user_agent': 'Mozilla/5.0 (X11; U; Linux x86_64; en-US; rv:1.9.2.18)',
+ 'response_bytes_clf': '3478',
+ 'status': '200',
+ 'time_received': '[16/Aug/2013:15:45:34 +0000]',
+ 'time_us': '1966093'}
+
+
+Sample_a_Splitter
+
+def apache2_logrow(s):
+    ''' Fast split on Apache2 log lines
+
+    http://httpd.apache.org/docs/trunk/logs.html
+    '''
+    row = [ ]
+    qe = qp = None # quote end character (qe) and quote parts (qp)
+    for s in s.replace('\r','').replace('\n','').split(' '):
+        if qp:
+            qp.append(s)
+        elif '' == s: # blanks
+            row.append('')
+        elif '"' == s[0]: # begin " quote "
+            qp = [ s ]
+            qe = '"'
+        elif '[' == s[0]: # begin [ quote ]
+            qp = [ s ]
+            qe = ']'
+        else:
+            row.append(s)
+
+        l = len(s)
+        if l and qe == s[-1]: # end quote
+            if l == 1 or s[-2] != '\\': # don't end on escaped quotes
+                row.append(' '.join(qp)[1:-1].replace('\\'+qe, qe))
+                qp = qe = None
+    return row
+
+
+Can Add to 'httpd.conf' to convert logs to json
+
+LogFormat "{\"time\":\"%t\", \"remoteIP\" :\"%a\", \"host\": \"%V\", \"request_id\": \"%L\", \"request\":\"%U\", \"query\" : \"%q\", \"method\":\"%m\", \"status\":\"%>s\", \"userAgent\":\"%{User-agent}i\", \"referer\":\"%{Referer}i\" }" json_log
+
+CustomLog /var/log/apache_access_log json_log
+CustomLog "|/usr/bin/python -u apacheLogHandler.py" json_log
+
+
+Apache_Log_Handler
+import time
+f = open('apache_access_log.log', 'r')
+for line in f: # read all lines already in the file
+  print line.strip()
+
+# keep waiting forever for more lines.
+while True:
+  line = f.readline() # just read more
+  if line: # if you got something...
+    print 'got data:', line.strip()
+  time.sleep(1)
+
+
+
+
+
+
