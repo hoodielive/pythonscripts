@@ -17,7 +17,9 @@ for line in passwd:
 	parts = line.strip().split(':')
 	for n in range(7):
 		if n == 1 and parts[n] == 'x':
-			print "%s: %s" % (fields[n], parts[n])
+			print "%s: %s" % (fields[n], 'encrypted')
+		else 
+		 	print "%s:%s" % (fields[n], parts[n])
 		print "\n"
 
 passwd.close()
