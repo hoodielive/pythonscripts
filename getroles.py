@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+
 hostnames = (
 	'dca-cor-7609-r1',
 	'dca-cor-7609-r2',
