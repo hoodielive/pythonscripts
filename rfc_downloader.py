@@ -1,4 +1,4 @@
-import sys, urllib.request 
+import sys, urllib
 
 try:
 	rfc_number = int(sys.argv[1])
