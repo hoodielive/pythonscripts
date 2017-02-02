@@ -1,0 +1,27 @@
+Python Networking
+
+/usr/include/asm-generic/errno.h 
+
+# Error Numbers are found in this file 
+
+Traceback (most recent call last):
+  File "<input>", line 1, in <module>
+    smtplib.SMTP('127.0.0.1', port=66000)
+  File "/usr/lib/python3.5/smtplib.py", line 251, in __init__
+    (code, msg) = self.connect(host, port)
+  File "/usr/lib/python3.5/smtplib.py", line 335, in connect
+    self.sock = self._get_socket(host, port, self.timeout)
+  File "/usr/lib/python3.5/smtplib.py", line 306, in _get_socket
+    self.source_address)
+  File "/usr/lib/python3.5/socket.py", line 711, in create_connection
+    raise err
+  File "/usr/lib/python3.5/socket.py", line 702, in create_connection
+    sock.connect(sa)
+
+smtp - application layer calls to socket layer 
+socket - transport layer protocol which calls to the OS to manage TCP connection 
+
+Shows network encapsulation in action
+
+
+'urllib' - downloads target of a 'URL' through a straightforward API. 
