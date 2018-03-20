@@ -1,0 +1,20 @@
+doc.findall 
+
+urllib 
+
+import requests (instead of urllib) if you are planning on doing web scraping. Encouraged not to use (urllib3) 
+
+
+Note
+
+If your machine requires the use of an HTTP proxy server, you may need to set the HTTP_PROXY environment variable to make this part of the exercise work. For example:
+
+>>> import os
+>>> os.environ['HTTP_PROXY'] = 'http://yourproxy.server.com'
+
+Launch Idle (mac) 
+python -m idlelib.idle 
+
+print(x, end= ' ') -> omit newline
+
+
