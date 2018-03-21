@@ -16,7 +16,3 @@ def parse_csv(filename):
             record = dict(zip(headers, row)) 
             records.append(record)
     return records 
-
-portfolio = parse_csv('portfolio.csv')
-
-print(portfolio) 
