@@ -1,13 +1,18 @@
-# Open file 
-with open('Data/portfolio.csv', 'rt') as f: 
-   headers = next(f) 
+mport report
 
-   for line in f: 
-       row = line.split(',')
-       nshares = int(row[1])
-       price = float(row[2])
-       total_cost += nshares * price 
+def portfolio_cost(filename):
+    '''
+    Computes the total cost (shares*price) of a portfolio file
+    '''
+    portfolio = report.read_portfolio(filename)
+    return sum([s['shares'] * s['price'] for s in portfolio])
 
-print('Total cost', total_cost)
+def main(args):
+    if len(args) != 2:
+        raise SystemExit('Usage: %s portfoliofile' % args[0])
+    filename = args[1]
+    print('Total cost:', portfolio_cost(filename))
 
-# Calculate how much it costs to purchase all shares in the port
+if __name__ == '__main__':
+    import sys
+    main(sys.argv)
