@@ -18,6 +18,22 @@ for key, value in dict.items():
 list = [1,2,3,4] 
 print(list) 
 print(list[2]) 
+print(list[-1]) 
+
+for item in list:
+    item += 1
+    print(item) 
 
 
+
+# Functional Programs only in Python 3.4 and above
+# map(function, list), filter(function, list), reduce(function,list) lambda, list comprehension 
+
+# map much like a for loop that can be used to apply an operation on each item and then return a result 
+
+items = [1,2,3,4,5] 
+def inc(x): retun x + 1 
+inc() 
+
+list(map(inc,items)) 
 
