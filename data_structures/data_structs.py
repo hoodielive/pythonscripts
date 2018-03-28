@@ -31,9 +31,10 @@ for item in list:
 
 # map much like a for loop that can be used to apply an operation on each item and then return a result 
 
+list = [1,2,3,4] 
 items = [1,2,3,4,5] 
-def inc(x): retun x + 1 
-inc() 
+def inc(x): return x + 1 
+inc(42) 
 
-list(map(inc,items)) 
+
 
