@@ -37,4 +37,7 @@ def inc(x): return x + 1
 inc(42) 
 
 
+# tuples
+a = tuple() 
+print(a) 
 
