@@ -16,7 +16,10 @@ def isPhoneNumber(text):
             return False
     return True
 
-arb_text = '4125482323'
-isPhoneNumber(arb_text)
+
+print('415-555-4242 is a phone number:') 
+print(isPhoneNumber('412-555-1212')) 
+print('Moshi moshi is a phone number:') 
+print(isPhoneNumber('Moshi Moshi'))
 
 
