@@ -6,3 +6,7 @@ for items in fardon:
     print(empty_list, end=' ') 
 
 
+with open('portfolio.csv', 'rt') as f:
+    headers =
+    for line in f:
+        rows = 
