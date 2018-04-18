@@ -1,1 +1,37 @@
-Fix error with script
+Fundamental Aggregate Type:
+
+*Lists 
+- Aggregate structure stores values 
+	- behavior governed by how you access structure 
+
+- Common idiom for list objects:
+	- Start empty
+	- Append values, remove values, search for values 
+	- Optional (sort) 
+	- Process all values in order 
+
+list = [] 
+
+list.append('generic structure') 
+list.remove()
+list.sort() 
+
+*Stacks 
+- Process collection of values in Last-in First-out 
+	- Push value onto stack
+	- Pop and retreive most recently added value
+	- Check if empty
+
+stack.pop()
+stack.push() 
+
+* you never sort stacks - because you structure them in the order you want them in, even though they look like lists
+
+* Queue 
+- Process collection of values in First-in First-Out
+	- Append value to tail (right end) of queue
+	- Pop value from head (left end) of queue 
+	- check if empty 
+
+append() 
+popLeft()  
