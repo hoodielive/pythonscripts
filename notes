@@ -11,7 +11,6 @@ Fundamental Aggregate Type:
 	- Process all values in order 
 
 list = [] 
-
 list.append('generic structure') 
 list.remove()
 list.sort() 
@@ -35,3 +34,138 @@ stack.push()
 
 append() 
 popLeft()  
+
+* Built-in Data Types
+List => 1 = [11, 51, 9] 
+
+Tuple => t = (11, 'MA', 9) 
+	- immutable heterogenous structures 
+
+Note: These are sequence types | they are used for data-processing - not just storage and retreival 
+
+* Associative | Hash types 
+
+* Dictionaries 
+
+d = {11: 99} 
+	- map hashable keys to arbitrary values 
+	- associative look-up 
+Note: for every key there is a value - and you can ask for those values d.values() or for key d.key() or the whole thing d.items() 
+- you can overwrite values as well. d[11(key)] = 55(value) where key/value are for annotation
+- d[k] = v
+
+* Sets 
+d = {'gemini', 'aries', 'gemini', 'aries'} 
+would return: "gemini", "aries" -<>- removing the duplicates
+	- Unordered collection of 'unique' elements 
+
+* Deque (double ended queue) 
+q = deque([11]) 
+	- Efficient append/remove on either end
+	- Perhaps least well-know of built-in types
+	from collections import deque 
+
+* Python Built-in Data Types 
+	- These are types used in this course
+		- Aggregate structures for collections 
+		- Common behaviors, some differences 
+	- Designed for consistency of interface 
+		- Many methods have same names 
+
+* contains -> 'in' [ x for x in list ] 
+
+* API considerations for Data Structures 
+	- An aggregate may provide Set Semantics 
+		- uniqueness of values within a set 
+		- should return meaningful responses to differentiate these 2 requests 
+
+	- We will design data structures 
+		- where possible, return True to declare aggregate state changed; return False when it doesn't
+s = set() 
+s.add(11) 
+print(s) 
+
+* Analysis Techniques - Determining the efficiency of operations 
+
+Asymptotic Analysis for Performance 
+
+- Characterize time complexity of method 
+	- Time for a method to complete (Big O'notation) 
+	- Calculate time as a function t(n) relating the number of steps given aggregate size, n
+
+-Characterize space complexity of method
+	- Amount of computer storage required
+	- Determine required space s(n) in similar fashion 
+
+& Data Structure Cost Model
+
+- From data structure implementation, determine total number of steps based on n
+	- Sequential, deterministic computing platform
+
+- Assume a constant cost to every operation 
+	- Enables using t(n) to estimate execution time
+
+Performance Computation :: Add 2n random digits for n = 1 to 8  *where n is to the power of | Big O'Notation 
+import random,timeit
+
+for trial in [ 2** _ for _ in range(1,9)]:
+	numbers = [random.randint(1,9) for _ in range(trial)] 
+	m = timeit.timeit(stmt='sum = 0\nfor d in numbers:\n\tsum = sum + d',
+			  setup='import rand\nnumbers = ' + str(numbers)) 
+	print('{0:d} {1:f}'.format(trial, m) 
+
+Note: if you take the sum of this algorithm and plot it in excel, you'd see a trend of a linear fit
+
+* Asymptotic Growth 
+- Execution times of Sum reveal correlation between n and t(n) 
+	- Sum exhibits linear behavior
+	- Sum is O(n) 
+
+* Asymptotic Space Complexity
+
+- How much extra storage is required
+	- A secondary concern that cannot be ignored
+
+- Sample Problem
+	- Determine if list contains duplicate values
+	- Different solutions based on storage 
+
+* Fast solution to check uniqueness in a list (set)
+
+def uniqueFastCheck(aList):
+	''' 
+	Return True if aList contains any duplicates. It completes in 0(n) time with 0(n) space required. Individual elements must be 
+	hashable
+	''' 
+
+	check = set() 
+	for v in aList:
+		if v in check:
+			return True
+		check.add(v)
+	return False
+
+- Performance is 0(n) with 0(n) extra space
+
+* Slow solution to check uniqueness in a list (quadratic or Performance is 0(n2))
+
+def uniqueSlowCheck(aList): 
+	''' Return True if aList contains any duplicates. Completes in 0(n2) time with no space required ''' 
+
+	for i in range(len(aList)-1):
+		for j in range(i+1, len(aList)):
+			if aList[i] == aList[j]:
+				return True
+	return False
+
+n squared performance (quadratic) 
+
+Builtin - Time Complexity 
+- Time Complexity of operations 
+	- Determines efficiency of your programs
+	- Length is 0(1) in all cases
+
+	List insert:0(n) # Add 
+	     append:0(1) # Add 
+
+	Tuple 
