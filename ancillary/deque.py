@@ -1,6 +1,6 @@
 from collections import deque 
 
-def search(lines, patterns, history=5):
+def search(lines, pattern, history=5):
     previous_lines = deque(maxlen=history) 
     for line in lines:
         if pattern in line:
@@ -16,7 +16,16 @@ if __name__ == '__main__':
             print(line, end='') 
             print('-'*20) 
 
-
+# Return stuff 
 q = deque(maxlen=3) 
 q.append((1,2,3)) 
+q.appendleft((4,5,6))
+print(q) 
 
+list = [7, 8, 9]
+a = deque(maxlen=3)
+a.extend(q)
+
+print(type(q))  
+print(type(a))  
+print(a) 
