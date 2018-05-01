@@ -7,4 +7,10 @@ function behappy(key, value) {
     console.log(howtobehappy)
 }
 
-behappy('Laughter', 'enough to have fun'); 
+behappy(1, 'Vincent Spivey'); 
+
+var nestedObj = {
+    name:'djheuty'
+}
+
+console.log(nestedObj.name); 
