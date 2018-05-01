@@ -1,0 +1,13 @@
+# a dictionary 
+
+{'firstSpirit': 'King Paimon',
+ 'secondSpirit': 'King Bael',
+ 'thirdSpirit': 'King Beleth',
+ 'fourthSpirit': 'King Vine',
+ 'fifthSpirit': 'King Belial',
+ 'sixthSpirit': 'King Balaam',
+ 'seventhSpirit': 'King Asmoday',
+ 'eigthSpirit': 'King Zagan',
+ 'ninthSpirit': 'King Purson'}
+
+
