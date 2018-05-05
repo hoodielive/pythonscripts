@@ -5,3 +5,4 @@ def normalize(numbers):
         percent = 100 * value / total 
         result.append(percent)
     return result
+    return result
