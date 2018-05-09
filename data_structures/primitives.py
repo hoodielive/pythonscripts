@@ -3,6 +3,5 @@ def count_bits(x):
     while x:
         num_bits += x & 1 
         x >>= 1
-    return num_bits
-
-count_bits(3) 
+    print(num_bits)
+count_bits(1300) 
