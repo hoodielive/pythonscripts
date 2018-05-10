@@ -18,5 +18,6 @@ class FrenchDeck:
 
 
 beer_card = Card('7', suit='diamonds')
+print(beer_card) 
 deck = FrenchDeck() 
-
+print(deck[0]) 
