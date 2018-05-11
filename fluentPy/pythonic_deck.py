@@ -8,7 +8,7 @@ class FrenchDeck:
 
     def __init__(self):
         self._cards = [Card(rank, suit) for suit in self.suits for rank in self.ranks] 
-        #print(type(self._cards)) 
+        print(type(self._cards)) 
 
     def __len__(self):
         return len(self._cards) 
