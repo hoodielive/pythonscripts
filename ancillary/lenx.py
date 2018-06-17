@@ -9,3 +9,11 @@ def f1():
     return result
 
 f1() 
+
+def f2():
+    def lenx(): 
+        lenx = range(3)
+        print("In f2's local lenx(), lenx is {}".format(lenx))
+        return lenx
+
+f2() 
