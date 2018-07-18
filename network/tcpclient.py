@@ -18,3 +18,5 @@ client.sendall(b'GET / HTTP/1.1\r\nHost: google.com\r\n\r\n')
 response = client.recv(4096)
 
 print(response) 
+
+# now when you connect to this item; what do you want to do with it?
