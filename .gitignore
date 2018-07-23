@@ -1,0 +1,8 @@
+*.cfg
+
+./requests-http/bin
+./requests-http/include
+./requests-http/lib
+./requests-http/lib64
+./reqests-http/pip-selfcheck.json
+./requests-http/pyvenv.cfg
