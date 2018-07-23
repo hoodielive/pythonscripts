@@ -3,5 +3,7 @@
 *.pyvenv.cfg
 */bin/*
 */lib/*
-*/lib64/*
-*/*/site-packages/*
+requests-http/*
+requests-http/lib/*
+requests-http/lib64/*
+*pip*
