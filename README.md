@@ -1,5 +1,5 @@
 # Pythonic Contemplations 
-## ` of all things pythonic `
+## { of all things pythonic }
 
 + generic operations on sequences 
 + built-in tuple and mapping types
