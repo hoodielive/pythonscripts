@@ -4,6 +4,8 @@ import collections
 
 Card = collections.namedtuple('Card', ['rank', 'suit']) 
 
+# this code demonstrates the power of implementing: -> special methods -> ('__getitem__'|'__len__'_) 
+
 class FrenchDeck:
     ranks = [str(n) for n in range(2, 11)] + list('JQKA') 
     suits = 'spades diamonds clubs hearts'.split() 
