@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-def timed_func(f, *ars, **kwargs):
+def timed_func(f, *args, **kwargs):
     myname = str(f).split(' ')[1] 
     def new_func(*args, **kwargs):
         t = time.ticks_us() 
